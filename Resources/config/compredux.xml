@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="router.options.matcher_class">NineThousand\Bundle\NineThousandCompreduxBundle\Component\Routing\Matcher\RedirectableCompreduxUrlMatcher</parameter>
+        <parameter key="router.options.matcher_base_class">NineThousand\Bundle\NineThousandCompreduxBundle\Component\Routing\Matcher\RedirectableCompreduxUrlMatcher</parameter>
+        <parameter key="router.options.matcher_dumper_class">NineThousand\Bundle\NineThousandCompreduxBundle\Component\Routing\Matcher\Dumper\CompreduxPhpMatcherDumper</parameter>
+        <parameter key="compredux.client.class">NineThousand\Compredux\Client</parameter>
+        <parameter key="compredux.filesystem.class">Symfony\Component\HttpKernel\Util\Filesystem</parameter>
+    </parameters>
+
+    <services>
+        <service id="compredux.filesystem" class="%compredux.filesystem.class%"></service>
+    </services>
+
+</container>
