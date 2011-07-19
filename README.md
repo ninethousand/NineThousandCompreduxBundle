@@ -85,6 +85,7 @@ The Compredux bundle will create services for all of your proxies so all you nee
 
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+    use Symfony\Component\HttpKernel\Exception\HttpException;
 
 
     class ProjectController extends Controller
@@ -96,8 +97,16 @@ The Compredux bundle will create services for all of your proxies so all you nee
             $compredux = array();
             $client = $this->container->get('compredux.myproxy');
             $client->request();
+            if ($client->hasErrors() && ($error = $client->getErrors())) {
+               if (false !== strpos($error, '404')) {
+                   throw new NotFoundHttpException('Compredux request returned 404');
+               } else {
+                   throw new HttpException('Compredux request returned error');
+               }
+            }
             $client->initHeaders();
-            if (!$client->isType('html')) {
+
+            if (!$client->isType('html') && !$client->hasErrors()) {
                 echo $client->getContent();
                 exit();
             }
