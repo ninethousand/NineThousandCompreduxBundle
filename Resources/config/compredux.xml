@@ -10,7 +10,7 @@
         <parameter key="router.options.matcher_base_class">NineThousand\Bundle\NineThousandCompreduxBundle\Component\Routing\Matcher\RedirectableCompreduxUrlMatcher</parameter>
         <parameter key="router.options.matcher_dumper_class">NineThousand\Bundle\NineThousandCompreduxBundle\Component\Routing\Matcher\Dumper\CompreduxPhpMatcherDumper</parameter>
         <parameter key="compredux.client.class">NineThousand\Compredux\Client</parameter>
-        <parameter key="compredux.filesystem.class">Symfony\Component\HttpKernel\Util\Filesystem</parameter>
+        <parameter key="compredux.filesystem.class">Symfony\Component\Filesystem\Filesystem</parameter>
     </parameters>
 
     <services>
