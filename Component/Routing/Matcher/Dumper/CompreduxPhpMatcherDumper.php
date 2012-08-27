@@ -221,14 +221,14 @@ EOF
         }
 
         // optimize parameters array
-        if (true === $matches && $compiledRoute->getDefaults()) {
+        if (true === $matches && $route->getDefaults()) {
             $code[] = sprintf("            return array_merge(\$this->mergeDefaults(\$matches, %s), array('_route' => '%s'));"
-                , str_replace("\n", '', var_export($compiledRoute->getDefaults(), true)), $name);
+                , str_replace("\n", '', var_export($route->getDefaults(), true)), $name);
         } elseif (true === $matches) {
             $code[] = sprintf("            \$matches['_route'] = '%s';", $name);
             $code[] = sprintf("            return \$matches;", $name);
-        } elseif ($compiledRoute->getDefaults()) {
-            $code[] = sprintf('            return %s;', str_replace("\n", '', var_export(array_merge($compiledRoute->getDefaults(), array('_route' => $name)), true)));
+        } elseif ($route->getDefaults()) {
+            $code[] = sprintf('            return %s;', str_replace("\n", '', var_export(array_merge($route->getDefaults(), array('_route' => $name)), true)));
         } else {
             $code[] = sprintf("            return array('_route' => '%s');", $name);
         }
@@ -286,4 +286,3 @@ EOF;
 EOF;
     }
 }
-

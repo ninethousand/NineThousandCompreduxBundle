@@ -89,7 +89,6 @@ class CompreduxRouteCompiler implements RouteCompilerInterface
         }
 
         return new CompiledRoute(
-            $route,
             'text' === $tokens[0][0] ? $tokens[0][1] : '',
             sprintf("#^\n%s#x", $regex),
             array_reverse($tokens),
@@ -97,4 +96,3 @@ class CompreduxRouteCompiler implements RouteCompilerInterface
         );
     }
 }
-
